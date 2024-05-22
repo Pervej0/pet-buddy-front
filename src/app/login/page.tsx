@@ -78,8 +78,8 @@ const LoginPage = () => {
               <Box>
                 <Image
                   src={assets.images.brand}
-                  width={200}
-                  height={200}
+                  width={170}
+                  height={170}
                   alt="logo"
                 />
               </Box>
