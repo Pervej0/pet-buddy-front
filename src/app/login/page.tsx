@@ -14,6 +14,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import loginUser from "@/services/actions/loginUser";
 import assets from "@/assets";
+import { storeUserInfo } from "@/services/auth.services";
 
 const loginSchema = z.object({
   email: z
@@ -26,13 +27,12 @@ const LoginPage = () => {
   const router = useRouter();
 
   const handleLogin: SubmitHandler<FieldValues> = async (data: FieldValues) => {
-    console.log(data, "xx");
-    return;
     const userInfo: FieldValues = await loginUser(data);
+    console.log(userInfo, "xx");
     if (userInfo.success) {
       toast.success("Logged in successfully.");
-      router.push("/dashboard");
-      storeUserInfo(userInfo.data.accessToken);
+      // router.push("/dashboard");
+      storeUserInfo(userInfo.data.token);
     } else {
       toast.error((userInfo?.message as string) || "something went wrong");
     }
