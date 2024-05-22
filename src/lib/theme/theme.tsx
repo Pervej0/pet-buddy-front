@@ -17,7 +17,7 @@ const firaSans = Fira_Sans({
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#1586FD",
+      main: "#9ABD0F",
     },
     secondary: {
       main: "#666F73",
@@ -30,16 +30,26 @@ const theme = createTheme({
       },
       styleOverrides: {
         root: {
-          padding: "8px 24px",
+          padding: "6px 24px",
+          backgroundColor: "#9ABD0F",
+          border: "1px solid #9ABD0F",
+          color: "#ffffff",
+          ":hover": {
+            backgroundColor: "transparent",
+            color: "#000000",
+            border: "1px solid #6d6d6d",
+          },
         },
       },
     },
+
     MuiContainer: {
       defaultProps: {
         maxWidth: "lg",
       },
     },
   },
+
   typography: {
     fontFamily: firaSans.style.fontFamily,
     h1: {
