@@ -13,6 +13,8 @@ import { useRouter } from "next/navigation";
 import { storeUserInfo } from "@/services/auth.services";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import registerUser from "@/services/actions/regiseterUser";
+import loginUser from "@/services/actions/loginUser";
 
 export interface TRegisterInput {
   password: string;
@@ -42,19 +44,22 @@ const RegisterPage = () => {
   const handleRegister: SubmitHandler<FieldValues> = async (
     data: FieldValues
   ) => {
-    console.log(data);
-    // const userInfo = await registerPatient(data);
-    return;
-    if (userInfo.success) {
-      const userLogin: FieldValues = await loginUser({
-        email: data.patient.email,
-        password: data.password,
-      });
-      if (userLogin.success) {
-        toast.success("User logged in successfully!");
-        router.push("/dashboard");
-        storeUserInfo(userLogin.data.accessToken);
+    try {
+      const userInfo = await registerUser(data);
+      if (userInfo.success) {
+        const userLogin: FieldValues = await loginUser({
+          email: data.email,
+          password: data.password,
+        });
+        if (userLogin.success) {
+          toast.success(userLogin.message);
+          // router.push("/dashboard");
+          storeUserInfo(userLogin.data.token);
+        }
       }
+    } catch (error: any) {
+      toast.error(error.data.message);
+      console.log(error);
     }
   };
 
