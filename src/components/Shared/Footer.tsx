@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import facebookIcon from "@/assets/landing_page/facebook.png";
@@ -15,14 +15,14 @@ const Footer = () => {
   return (
     <Box bgcolor="#273746" py={5}>
       <Container>
-        <Stack
-          direction="row"
+        <Grid
+          container
           justifyContent="space-between"
           alignItems="center"
-          gap={4}
+          spacing={4}
           pb={2}
         >
-          <Box>
+          <Grid item md={3} xs={12}>
             <Stack direction="row" alignItems="center" spacing={2}>
               <LocationOnIcon style={{ color: "white", fontSize: "20px" }} />
               <Typography color="#ffffff">
@@ -39,48 +39,52 @@ const Footer = () => {
               <EmailIcon style={{ color: "white", fontSize: "20px" }} />
               <Typography color="#ffffff">petbuddy@buddy.org</Typography>
             </Stack>
-          </Box>
-          <Stack
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            gap={4}
-          >
-            <Typography color="#ffffff" component={Link} href="/consultation">
-              About
-            </Typography>
-            <Typography color="#ffffff">Contact Us</Typography>
-            <Typography color="#ffffff">Privacy Policy</Typography>
-            <Typography color="#ffffff">Terms & Conditions</Typography>
-            <Typography color="#ffffff">Support</Typography>
-          </Stack>
-          <Stack direction="row" gap={2} justifyContent="center" py={3}>
-            <Image
-              src={assets.images.icon.facebook}
-              width={30}
-              height={30}
-              alt="facebook"
-            />
-            <Image
-              src={assets.images.icon.instagram}
-              width={30}
-              height={30}
-              alt="instagram"
-            />
-            <Image
-              src={assets.images.icon.twitter}
-              width={30}
-              height={30}
-              alt="twitter"
-            />
-            <Image
-              src={assets.images.icon.linkedin}
-              width={30}
-              height={30}
-              alt="linkedin"
-            />
-          </Stack>
-        </Stack>
+          </Grid>
+          <Grid item md={6} xs={12}>
+            <Stack
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+              gap={4}
+            >
+              <Typography color="#ffffff" component={Link} href="/consultation">
+                About
+              </Typography>
+              <Typography color="#ffffff">Contact Us</Typography>
+              <Typography color="#ffffff">Privacy Policy</Typography>
+              <Typography color="#ffffff">Terms & Conditions</Typography>
+              <Typography color="#ffffff">Support</Typography>
+            </Stack>
+          </Grid>
+          <Grid item md={3} xs={12}>
+            <Stack direction="row" gap={2} justifyContent="center" py={3}>
+              <Image
+                src={assets.images.icon.facebook}
+                width={30}
+                height={30}
+                alt="facebook"
+              />
+              <Image
+                src={assets.images.icon.instagram}
+                width={30}
+                height={30}
+                alt="instagram"
+              />
+              <Image
+                src={assets.images.icon.twitter}
+                width={30}
+                height={30}
+                alt="twitter"
+              />
+              <Image
+                src={assets.images.icon.linkedin}
+                width={30}
+                height={30}
+                alt="linkedin"
+              />
+            </Stack>
+          </Grid>
+        </Grid>
 
         <div className="border-b-[1px] border-dashed border-[]"></div>
         <Stack

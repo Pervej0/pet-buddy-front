@@ -14,7 +14,7 @@ const HeroSection = () => {
       <Container>
         <Box
           sx={{
-            height: "83vh",
+            minHeight: "83vh",
             display: "flex",
             flexDirection: { md: "row", xs: "column" },
             alignItems: "center",
