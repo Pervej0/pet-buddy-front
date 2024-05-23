@@ -8,6 +8,9 @@ const assets = {
       loginBanner: require("./auth/login-banner.png"),
       registerBanner: require("./auth/register-banner.png"),
     },
+    home: {
+      homeBanner: require("./home/home-banner.png"),
+    },
   },
 };
 

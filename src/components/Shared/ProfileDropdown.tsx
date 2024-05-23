@@ -25,6 +25,7 @@ import { AccountCircle, Padding } from "@mui/icons-material";
 import { getUserInfo } from "@/services/auth.services";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import logOutUser from "@/services/actions/logOutUser";
 
 const ProfileDropdown = () => {
   const user = getUserInfo();
@@ -43,8 +44,8 @@ const ProfileDropdown = () => {
     ) {
       return;
     }
-
-    setOpen(false);
+    // setOpen(false);
+    logOutUser(router);
   };
 
   function handleListKeyDown(event: React.KeyboardEvent) {
@@ -109,8 +110,8 @@ const ProfileDropdown = () => {
                       aria-labelledby="composition-button"
                       onKeyDown={handleListKeyDown}
                     >
-                      <MenuItem onClick={handleClose}>Profile</MenuItem>
-                      <MenuItem onClick={handleClose}>My account</MenuItem>
+                      <MenuItem>Profile</MenuItem>
+                      <MenuItem>My account</MenuItem>
                       <MenuItem onClick={handleClose}>Logout</MenuItem>
                     </MenuList>
                   </ClickAwayListener>

@@ -72,7 +72,7 @@ const Navbar = (props: Props) => {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", height: "80px" }}>
       {/* <CssBaseline /> */}
       <AppBar component="nav" sx={{ backgroundColor: "#fefcff" }}>
         <Container>
