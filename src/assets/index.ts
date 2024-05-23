@@ -11,6 +11,12 @@ const assets = {
     home: {
       homeBanner: require("./home/home-banner.png"),
     },
+    icon: {
+      facebook: require("./icon/facebook.png"),
+      twitter: require("./icon/twitter.png"),
+      linkedin: require("./icon/linkedin.png"),
+      instagram: require("./icon/instagram.png"),
+    },
   },
 };
 

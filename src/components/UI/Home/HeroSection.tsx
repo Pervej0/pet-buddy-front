@@ -14,7 +14,7 @@ const HeroSection = () => {
       <Container>
         <Box
           sx={{
-            height: "90vh",
+            height: "83vh",
             display: "flex",
             flexDirection: { md: "row", xs: "column" },
             alignItems: "center",
@@ -33,7 +33,13 @@ const HeroSection = () => {
             >
               Save Teddy Make <br /> Pet Buddy
             </Typography>
-            <Typography my={2} variant="h6" component="h6">
+            <Typography
+              my={2}
+              variant="h6"
+              component="h6"
+              fontSize={18}
+              fontWeight={400}
+            >
               We are One of the reliable brand to have pet in your home
             </Typography>
             <Button>Read More</Button>
