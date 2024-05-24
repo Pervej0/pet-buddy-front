@@ -1,5 +1,6 @@
 import { BaseQueryFn } from "@reduxjs/toolkit/query";
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
+import { instance as AxiosInstance } from "./axiosInstance";
 
 const axiosBaseQuery =
   (
@@ -17,7 +18,7 @@ const axiosBaseQuery =
   > =>
   async ({ url, method, data, params, headers }) => {
     try {
-      const result = await axios({
+      const result = await AxiosInstance({
         url: baseUrl + url,
         method,
         data,

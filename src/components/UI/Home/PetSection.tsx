@@ -1,3 +1,6 @@
+"use client";
+
+import { useGetAllPetsQuery } from "@/redux/api/user/petsApi";
 import {
   Box,
   Container,
@@ -9,6 +12,8 @@ import {
 import React from "react";
 
 const PetSection = () => {
+  const { data, isLoading } = useGetAllPetsQuery({});
+  console.log(data, "x");
   return (
     <Box my={5}>
       <Container>
