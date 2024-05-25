@@ -2,6 +2,8 @@ export interface TPet {
   id: string;
   name: string;
   species: string;
+  photos: string[];
+  gender: string;
   breed: string;
   age: number;
   size: string;
@@ -10,6 +12,6 @@ export interface TPet {
   temperament: string;
   medicalHistory: string;
   adoptionRequirements: string;
-  createdAt: string;
-  updatedAt: string;
+  specialNeeds: string;
+  healthStatus: string;
 }

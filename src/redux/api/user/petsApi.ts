@@ -18,7 +18,17 @@ const petsApi = baseApi.injectEndpoints({
       },
       providesTags: [],
     }),
+    getSinglePet: build.query({
+      query: (id) => {
+        return {
+          url: `/pets/${id}`,
+          method: "GET",
+        };
+      },
+
+      providesTags: [],
+    }),
   }),
 });
 
-export const { useGetAllPetsQuery } = petsApi;
+export const { useGetAllPetsQuery, useGetSinglePetQuery } = petsApi;

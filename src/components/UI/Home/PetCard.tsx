@@ -5,30 +5,45 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Stack,
   Typography,
 } from "@mui/material";
 import React from "react";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import Link from "next/link";
 
-const PetCard = ({ petDetails }: { petDetails: TPet }) => {
+const PetCard = ({ petCard }: { petCard: TPet }) => {
+  console.log(petCard, "xx");
   return (
-    <Card>
+    <Card style={{ paddingBottom: "16px" }}>
       <CardMedia
         sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
+        image={petCard.photos[0]}
         title="green iguana"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {petCard.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {petCard.description.slice(0, 80)}
+        </Typography>
+        <Stack my={1} direction="row" justifyContent="space-between">
+          <Typography variant="body2" color="text.secondary">
+            Age: {petCard.age}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Breed: {petCard.breed}
+          </Typography>
+        </Stack>
+        <Typography variant="body2" color="text.secondary">
+          <LocationOnIcon /> {petCard.location}
         </Typography>
       </CardContent>
-      <CardActions pb={2}>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+      <CardActions>
+        <Link href={`pets/${petCard.id}`} className="pl-2">
+          Learn More
+        </Link>
       </CardActions>
     </Card>
   );
