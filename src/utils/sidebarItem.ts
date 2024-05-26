@@ -32,7 +32,7 @@ const sidebarItems = (role: TUserRole) => {
       menus.push(
         {
           title: "Dashboard",
-          path: `${role}`,
+          path: `dashboard/${role}`,
           icon: DashboardIcon,
         },
         {
