@@ -1,5 +1,6 @@
 import axiosBaseQuery from "@/helpers/axiosBaseQuery";
 import { createApi } from "@reduxjs/toolkit/query/react";
+import { tagTypesList } from "./tag-types";
 
 const baseApi = createApi({
   reducerPath: "baseApi",
@@ -7,7 +8,7 @@ const baseApi = createApi({
     baseUrl: process.env.BACK_END_URL as string,
   }),
   endpoints: () => ({}),
-  //   tagTypes:
+  tagTypes: tagTypesList,
 });
 
 export default baseApi;

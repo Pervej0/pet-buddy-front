@@ -1,5 +1,11 @@
 export const authKey = "accessToken";
 
+// user role
+export const USER_ROLE = {
+  ADMIN: "admin",
+  USER: "user",
+};
+
 // Pet relevant constant value
 export const petLimitPerPage = 6;
 export const sizeFilter = ["Small", "Medium", "Large"];

@@ -1,3 +1,7 @@
+import { USER_ROLE } from "@/constant/common";
+import { SvgIconTypeMap } from "@mui/material";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
+
 export interface TPet {
   id: string;
   name: string;
@@ -15,3 +19,13 @@ export interface TPet {
   specialNeeds: string;
   healthStatus: string;
 }
+
+export interface ISidebarItems {
+  title: string;
+  path: string;
+  parentPath?: string;
+  icon?: OverridableComponent<SvgIconTypeMap<{}, "svg">> & { muiName: string };
+  child?: ISidebarItems[];
+}
+
+export type TUserRole = keyof typeof USER_ROLE;

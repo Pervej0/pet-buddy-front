@@ -49,12 +49,14 @@ const Navbar = (props: Props) => {
   const drawer = (
     <Box sx={{ textAlign: "center" }}>
       <Box sx={{ display: "flex", justifyContent: "center", py: 2 }}>
-        <Image
-          src={assets.images.brand}
-          alt="Brand logo"
-          width={120}
-          height={120}
-        />
+        <Link href="/">
+          <Image
+            src={assets.images.brand}
+            alt="Brand logo"
+            width={120}
+            height={120}
+          />
+        </Link>
       </Box>
       <Divider />
       <List>
@@ -96,12 +98,14 @@ const Navbar = (props: Props) => {
               <MenuIcon />
             </IconButton>
             <Box>
-              <Image
-                src={assets.images.brand}
-                alt="Brand logo"
-                width={120}
-                height={120}
-              />
+              <Link href="/">
+                <Image
+                  src={assets.images.brand}
+                  alt="Brand logo"
+                  width={120}
+                  height={120}
+                />
+              </Link>
             </Box>
             <Stack
               direction="row"

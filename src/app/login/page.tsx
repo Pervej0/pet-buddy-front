@@ -2,12 +2,11 @@
 
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { Toaster, toast } from "sonner";
 // import { storeUserInfo } from "@/services/auth.services";
-import { useRouter } from "next/navigation";
 import GlobalForm from "@/components/Form/GlobalForm";
 import GlobalInput from "@/components/Form/GlobalInput";
 import { z } from "zod";
@@ -15,6 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import loginUser from "@/services/actions/loginUser";
 import assets from "@/assets";
 import { storeUserInfo } from "@/services/auth.services";
+import { useRouter } from "next/navigation";
 
 const loginSchema = z.object({
   email: z
@@ -30,7 +30,7 @@ const LoginPage = () => {
     const userInfo: FieldValues = await loginUser(data);
     if (userInfo.success) {
       toast.success("Logged in successfully.");
-      // router.push("/dashboard");
+      router.push("/");
       storeUserInfo(userInfo.data.token);
     } else {
       toast.error((userInfo?.message as string) || "something went wrong");

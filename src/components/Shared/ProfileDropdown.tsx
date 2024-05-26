@@ -110,8 +110,12 @@ const ProfileDropdown = () => {
                       aria-labelledby="composition-button"
                       onKeyDown={handleListKeyDown}
                     >
-                      <MenuItem>Profile</MenuItem>
-                      <MenuItem>My account</MenuItem>
+                      <Link href="/dashboard/profile">
+                        <MenuItem>Profile</MenuItem>
+                      </Link>
+                      <Link href="/dashboard">
+                        <MenuItem>Dashboard</MenuItem>
+                      </Link>
                       <MenuItem onClick={handleClose}>Logout</MenuItem>
                     </MenuList>
                   </ClickAwayListener>

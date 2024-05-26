@@ -10,7 +10,7 @@ const loginUser = async (data: FieldValues) => {
     },
     body: JSON.stringify(data),
     // credentials: "include",
-    // cache: "no-store",
+    cache: "no-store",
   });
   const result = await response.json();
   return result;

@@ -6,10 +6,12 @@ import React from "react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Loader from "@/components/Shared/Loader";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { getUserInfo } from "@/services/auth.services";
 
 const PetDetails = ({ params }: { params: { petId: string } }) => {
   const { data: pet, isLoading } = useGetSinglePetQuery(params?.petId);
-  console.log(pet);
+
   if (isLoading) {
     return <Loader />;
   }
