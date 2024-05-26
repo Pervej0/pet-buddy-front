@@ -32,7 +32,11 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
+const navItems = [
+  { item: "Home", route: "/" },
+  { item: "About", route: "/about" },
+  { item: "Contact", route: "/contact" },
+];
 
 const Navbar = (props: Props) => {
   const { window } = props;
@@ -55,9 +59,9 @@ const Navbar = (props: Props) => {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem key={item.item} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={item.item} color="black" />
             </ListItemButton>
           </ListItem>
         ))}
@@ -107,8 +111,13 @@ const Navbar = (props: Props) => {
               sx={{ display: { xs: "none", sm: "block", md: "inherit" } }}
             >
               {navItems.map((item, index) => (
-                <Typography key={index} component={Link} href="/">
-                  {item}
+                <Typography
+                  key={index}
+                  component={Link}
+                  href={item.route}
+                  color="black"
+                >
+                  {item.item}
                 </Typography>
               ))}
             </Stack>

@@ -20,20 +20,28 @@ import PetCard from "./PetCard";
 import { TPet } from "@/types/common.type";
 import Loader from "@/components/Shared/Loader";
 import SelectField from "@/components/Shared/SelectField";
+import { useDebounce } from "@/redux/api/hooks";
+import { ageFilter, sizeFilter, specialNeedsFilter } from "@/constant/common";
 
 const PetSection = () => {
   const [page, setPage] = React.useState(1);
+  const [searchText, setSearchText] = React.useState("");
+  const [age, setAge] = React.useState(null);
+  const [size, setSize] = React.useState<string | null>(null);
+  const [specialNeeds, setSpecialNeeds] = React.useState(null);
+  const debounceText = useDebounce({ searchQuery: searchText, delay: 600 });
+  const query: Record<string, any> = {};
+  if (!!debounceText) {
+    query["searchTerm"] = searchText;
+  }
   const { data: pets, isLoading } = useGetAllPetsQuery({
+    ...query,
+    size: size?.toLocaleLowerCase() as string,
+    age: age,
+    specialNeeds: specialNeeds,
     page: page,
     limit: 6,
   });
-  const [age, setAge] = React.useState([]);
-  const [size, setSize] = React.useState([]);
-  const [specialNeeds, setSpecialNeeds] = React.useState([]);
-
-  const handleChange = (event: SelectChangeEvent) => {
-    // setAge(event.target.value as string);
-  };
 
   return (
     <Box my={5}>
@@ -53,18 +61,38 @@ const PetSection = () => {
           </Grid>
           <Grid item md={6} xs={12}>
             <Stack direction="row" gap={2}>
-              <SelectField label="Age" age={age} handleChange={handleChange} />
+              <SelectField
+                label="Age"
+                value={age}
+                handleChange={(e: any) => {
+                  // setSize("");
+                  // setSpecialNeeds("");
+                  setAge(e.target.value);
+                }}
+                options={ageFilter}
+              />
               <SelectField
                 label="Size"
-                age={size}
-                handleChange={handleChange}
+                value={size}
+                handleChange={(e: any) => {
+                  // setAge("");
+                  // setSpecialNeeds("");
+                  setSize(e.target.value);
+                }}
+                options={sizeFilter}
               />
               <SelectField
                 label="Special Needs"
-                age={specialNeeds}
-                handleChange={handleChange}
+                value={specialNeeds}
+                handleChange={(e: any) => {
+                  // setAge("");
+                  // setSize("");
+                  setSpecialNeeds(e.target.value);
+                }}
+                options={specialNeedsFilter}
               />
               <TextField
+                onChange={(e) => setSearchText(e.target.value)}
                 sx={{
                   marginLeft: 3,
                 }}
@@ -75,21 +103,29 @@ const PetSection = () => {
           </Grid>
         </Grid>
         <Grid container spacing={3}>
+          {pets?.data < 1 && (
+            <Typography variant="h6" component="h6">
+              No Data Found!
+            </Typography>
+          )}
           {pets?.data.map((item: TPet) => (
             <Grid item key={item.id} md={4} sm={6} xs={12}>
               <PetCard petCard={item} />
             </Grid>
           ))}
         </Grid>
-        {pets?.data?.length > 1 && (
-          <Stack spacing={2} mt={4}>
-            <Pagination
-              count={10}
-              page={page}
-              onChange={(value: any) => setPage(value)}
-            />
-          </Stack>
-        )}
+
+        <Stack spacing={2} mt={4}>
+          <Pagination
+            count={10}
+            page={page}
+            variant="outlined"
+            shape="rounded"
+            onChange={(event: React.ChangeEvent<unknown>, value: number) =>
+              setPage(value)
+            }
+          />
+        </Stack>
       </Container>
     </Box>
   );

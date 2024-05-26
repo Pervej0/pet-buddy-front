@@ -13,7 +13,6 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Link from "next/link";
 
 const PetCard = ({ petCard }: { petCard: TPet }) => {
-  console.log(petCard, "xx");
   return (
     <Card style={{ paddingBottom: "16px" }}>
       <CardMedia
