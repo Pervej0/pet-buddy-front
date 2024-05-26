@@ -53,7 +53,7 @@ const RegisterPage = () => {
         });
         if (userLogin.success) {
           toast.success(userLogin.message);
-          // router.push("/dashboard");
+          router.push("/");
           storeUserInfo(userLogin.data.token);
         }
       }

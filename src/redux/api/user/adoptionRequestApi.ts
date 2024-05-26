@@ -1,19 +1,19 @@
 import baseApi from "../baseApi";
 import { tagTypes } from "../tag-types";
 
-const petsApi = baseApi.injectEndpoints({
+const adoptionRequestApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    createPet: build.mutation({
+    createAdoptionRequest: build.mutation({
       query: (data) => {
         return {
-          url: "/pets",
+          url: "/adoption-request",
           method: "POST",
           data,
         };
       },
-      invalidatesTags: [tagTypes.pets],
+      invalidatesTags: [tagTypes.adoptionRequest],
     }),
-    getAllPets: build.query({
+    getAllAdoptionRequest: build.query({
       query: (args) => {
         return {
           url: "/pets",
@@ -27,33 +27,33 @@ const petsApi = baseApi.injectEndpoints({
           meta: response.meta,
         };
       },
-      providesTags: [tagTypes.pets],
+      providesTags: [],
     }),
-    getSinglePet: build.query({
+    getMyAdoptionRequests: build.query({
       query: (id) => {
         return {
-          url: `/pets/${id}`,
+          url: `/pets`,
           method: "GET",
         };
       },
 
       providesTags: [],
     }),
-    updatePet: build.mutation({
+    updateAdoptionRequest: build.mutation({
       query: (data) => ({
-        url: `/pets/${data.id}`,
+        url: `/adoption-requests/${data.id}`,
         method: "PUT",
         contentType: "application/json",
         data: data.updatedData,
       }),
-      invalidatesTags: [tagTypes.pets],
+      invalidatesTags: [tagTypes.adoptionRequest],
     }),
   }),
 });
 
 export const {
-  useUpdatePetMutation,
-  useCreatePetMutation,
-  useGetAllPetsQuery,
-  useGetSinglePetQuery,
-} = petsApi;
+  useCreateAdoptionRequestMutation,
+  useGetAllAdoptionRequestQuery,
+  useGetMyAdoptionRequestsQuery,
+  useUpdateAdoptionRequestMutation,
+} = adoptionRequestApi;

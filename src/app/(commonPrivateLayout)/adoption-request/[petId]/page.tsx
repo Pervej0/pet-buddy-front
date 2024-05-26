@@ -3,8 +3,8 @@
 import GlobalForm from "@/components/Form/GlobalForm";
 import GlobalInput from "@/components/Form/GlobalInput";
 import Loader from "@/components/Shared/Loader";
+import { useCreateAdoptionRequestMutation } from "@/redux/api/user/adoptionRequestApi";
 import { useGetMyProfileQuery } from "@/redux/api/user/userApi";
-import { getUserInfo } from "@/services/auth.services";
 import {
   Box,
   Button,
@@ -14,15 +14,16 @@ import {
   Typography,
 } from "@mui/material";
 import dayjs from "dayjs";
-import { JwtPayload } from "jwt-decode";
 import React, { useState } from "react";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { boolean } from "zod";
+import { FieldValues, SubmitHandler } from "react-hook-form";
+import { Toaster, toast } from "sonner";
 
 const AdoptionRequestPage = ({ params }: { params: { petId: string } }) => {
   const [termsAndConditions, setTermsAndConditions] = useState(false);
-  const userInfo = getUserInfo() as JwtPayload;
-  // console.log(userInfo);
+  const [createAdoptionRequest, { isLoading: submitLoading }] =
+    useCreateAdoptionRequestMutation();
+  const [buttonDisabled, setButtonDisabled] = useState(submitLoading || false);
+
   const { data: user, isLoading } = useGetMyProfileQuery({});
 
   if (isLoading) {
@@ -34,13 +35,12 @@ const AdoptionRequestPage = ({ params }: { params: { petId: string } }) => {
   ) => {
     values.termsAndConditions = termsAndConditions;
     values.adoptionDate = dayjs(new Date()).toISOString();
-    console.log(values);
-    return;
+
     try {
-      const result = await createSpecialty(data).unwrap();
-      if (result.data.id) {
+      const result = await createAdoptionRequest(values).unwrap();
+      if (result.success) {
+        setButtonDisabled(true);
         toast.success(result.message);
-        setOpen(false);
       }
     } catch (err: any) {
       toast.error(err.data.message);
@@ -57,6 +57,7 @@ const AdoptionRequestPage = ({ params }: { params: { petId: string } }) => {
   return (
     <Box my={2}>
       <Container>
+        <Toaster position="top-center" />
         <Typography variant="h6" component="h6" mt={5}>
           Request form for your pet buddy{" "}
         </Typography>
@@ -113,7 +114,7 @@ const AdoptionRequestPage = ({ params }: { params: { petId: string } }) => {
             />
           </Typography>
 
-          <Button sx={{ mt: 2 }} type="submit">
+          <Button disabled={buttonDisabled} sx={{ mt: 2 }} type="submit">
             Submit
           </Button>
         </GlobalForm>
