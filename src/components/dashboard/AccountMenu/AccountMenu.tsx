@@ -11,6 +11,8 @@ import Logout from "@mui/icons-material/Logout";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useRouter } from "next/navigation";
 import { removeUser } from "@/services/auth.services";
+import HomeIcon from "@mui/icons-material/Home";
+import Link from "next/link";
 
 const menuStyles = {
   paper: {
@@ -99,6 +101,19 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
+        <Link href="/">
+          <MenuItem>
+            <HomeIcon
+              sx={{
+                background: "transparent",
+                color: "primary.main",
+                mr: 1,
+                ml: 1,
+              }}
+            />
+            Home
+          </MenuItem>
+        </Link>
         <MenuItem onClick={handleClose}>
           <Avatar sx={{ background: "transparent", color: "primary.main" }} />
           Profile

@@ -194,7 +194,7 @@ export default function ResponsiveDrawer({
               component="div"
               sx={{ color: "primary.main" }}
             >
-              Welcome to PH Health Care!
+              Welcome to petBuddy!
             </Typography>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
@@ -222,7 +222,7 @@ export default function ResponsiveDrawer({
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      {renderMenu}
+      {/* {renderMenu} */}
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}

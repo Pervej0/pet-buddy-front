@@ -20,16 +20,21 @@ const DashboardSidebar = () => {
 
   return (
     <>
-      <Stack direction="row" gap={1} px={2} py={2} component={Link} href="/">
+      <Stack
+        direction="row"
+        gap={1}
+        px={2}
+        pt={2}
+        justifyContent="center"
+        component={Link}
+        href="/"
+      >
         <Image
           src={assets.images.brand}
           alt="brand logo"
-          width={40}
-          height={40}
+          width={100}
+          height={100}
         />
-        <Typography variant="h6" component="h6">
-          PH Health Care
-        </Typography>
       </Stack>
       <List>
         {sidebarItems(currentUser?.toLowerCase() as TUserRole)?.map(

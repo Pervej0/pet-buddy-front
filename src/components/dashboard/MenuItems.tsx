@@ -1,4 +1,4 @@
-import { ISidebarItems } from "@/types";
+import { ISidebarItems } from "@/types/common.type";
 import {
   ListItem,
   ListItemButton,

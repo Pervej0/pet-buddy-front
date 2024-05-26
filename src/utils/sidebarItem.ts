@@ -36,29 +36,19 @@ const sidebarItems = (role: TUserRole) => {
           icon: DashboardIcon,
         },
         {
-          title: "Specialties",
-          path: `${role}/specialties`,
+          title: "Manage User",
+          path: `${role}/users`,
+          icon: GroupIcon,
+        },
+        {
+          title: "Change Role",
+          path: `${role}/user`,
           icon: TryIcon,
         },
         {
-          title: "Doctors",
-          path: `${role}/doctors`,
-          icon: MedicalInformationIcon,
-        },
-        {
-          title: "Schedules",
-          path: `${role}/schedules`,
-          icon: CalendarMonthIcon,
-        },
-        {
-          title: "Appointments",
-          path: `${role}/appointments`,
+          title: "Adoption Request",
+          path: `${role}/adoption-request`,
           icon: BookOnlineIcon,
-        },
-        {
-          title: "Reviews",
-          path: `${role}/reviews`,
-          icon: ReviewsIcon,
         }
       );
       break;
