@@ -23,7 +23,7 @@ const sidebarItems = (role: TUserRole) => {
     },
     {
       title: "Change Password",
-      path: `change-password`,
+      path: `${role}/change-password`,
       icon: KeyIcon,
     },
   ];
@@ -53,23 +53,11 @@ const sidebarItems = (role: TUserRole) => {
       );
       break;
     case USER_ROLE.USER:
-      menus.push(
-        {
-          title: "Appointments",
-          path: `${role}/appointments`,
-          icon: BookOnlineIcon,
-        },
-        {
-          title: "Prescriptions",
-          path: `${role}/prescriptions`,
-          icon: ReceiptLongIcon,
-        },
-        {
-          title: "Payment History",
-          path: `${role}/payment-history`,
-          icon: AttachMoneyIcon,
-        }
-      );
+      menus.push({
+        title: "My Request",
+        path: `${role}/my-adoption-request`,
+        icon: BookOnlineIcon,
+      });
     default:
       break;
   }

@@ -6,7 +6,7 @@ const adoptionRequestApi = baseApi.injectEndpoints({
     createAdoptionRequest: build.mutation({
       query: (data) => {
         return {
-          url: "/adoption-request",
+          url: "/adoption-requests",
           method: "POST",
           data,
         };
@@ -16,7 +16,7 @@ const adoptionRequestApi = baseApi.injectEndpoints({
     getAllAdoptionRequest: build.query({
       query: (args) => {
         return {
-          url: "/pets",
+          url: "/adoption-requests",
           method: "GET",
           params: args,
         };
@@ -27,17 +27,17 @@ const adoptionRequestApi = baseApi.injectEndpoints({
           meta: response.meta,
         };
       },
-      providesTags: [],
+      providesTags: [tagTypes.adoptionRequest],
     }),
     getMyAdoptionRequests: build.query({
-      query: (id) => {
+      query: () => {
         return {
-          url: `/pets`,
+          url: `/adoption-requests/my-request`,
           method: "GET",
         };
       },
 
-      providesTags: [],
+      providesTags: [tagTypes.adoptionRequest],
     }),
     updateAdoptionRequest: build.mutation({
       query: (data) => ({
@@ -45,6 +45,13 @@ const adoptionRequestApi = baseApi.injectEndpoints({
         method: "PUT",
         contentType: "application/json",
         data: data.updatedData,
+      }),
+      invalidatesTags: [tagTypes.adoptionRequest],
+    }),
+    deleteAdoptionRequest: build.mutation({
+      query: (id) => ({
+        url: `/adoption-requests/${id}`,
+        method: "DELETE",
       }),
       invalidatesTags: [tagTypes.adoptionRequest],
     }),
@@ -56,4 +63,5 @@ export const {
   useGetAllAdoptionRequestQuery,
   useGetMyAdoptionRequestsQuery,
   useUpdateAdoptionRequestMutation,
+  useDeleteAdoptionRequestMutation,
 } = adoptionRequestApi;
