@@ -20,9 +20,9 @@ const MenuItems = ({ sidebarItem }: { sidebarItem: ISidebarItems }) => {
           sx={{
             ...(location === currentPath
               ? {
-                  borderRight: "3px solid #1586FD",
+                  borderRight: "3px solid #99BF0E",
                   "& svg": {
-                    color: "#1586FD",
+                    color: "#99BF0E",
                   },
                 }
               : {}),

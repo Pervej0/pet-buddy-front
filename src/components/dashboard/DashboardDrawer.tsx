@@ -154,7 +154,7 @@ export default function ResponsiveDrawer({
   );
 
   const userInfo = getUserInfo();
-  console.log(userInfo, "xxx");
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />

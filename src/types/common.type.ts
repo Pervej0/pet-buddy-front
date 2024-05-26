@@ -29,3 +29,17 @@ export interface ISidebarItems {
 }
 
 export type TUserRole = keyof typeof USER_ROLE;
+
+export type TGlobalModal = {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  title?: string;
+  children: React.ReactNode;
+};
+
+export type TUserInfo = {
+  email: string;
+  exp: number;
+  iat: number;
+  role: string;
+};
