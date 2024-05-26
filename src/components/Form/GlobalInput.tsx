@@ -11,6 +11,7 @@ interface IInput {
   sx?: SxProps;
   placeholder?: string;
   required?: boolean;
+  disabled?: boolean;
 }
 
 const GlobalInput = ({
@@ -21,6 +22,7 @@ const GlobalInput = ({
   fullWidth,
   placeholder,
   required,
+  disabled,
   sx,
 }: IInput) => {
   const { control } = useFormContext();
@@ -38,6 +40,7 @@ const GlobalInput = ({
           fullWidth={fullWidth}
           variant="outlined"
           placeholder={label}
+          disabled={disabled}
           required={required}
           error={!!error?.message}
           helperText={error?.message}

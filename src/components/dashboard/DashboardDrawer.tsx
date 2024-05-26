@@ -19,7 +19,7 @@ import { getUserInfo, removeUser } from "@/services/auth.services";
 import { useRouter } from "next/navigation";
 import AccountMenu from "./AccountMenu/AccountMenu";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import { useGetSingleUserQuery } from "@/redux/api/user/userApi";
+import { useGetMyProfileQuery } from "@/redux/api/user/userApi";
 
 const drawerWidth = 240;
 const menuId = "primary-search-account-menu";
@@ -34,7 +34,7 @@ export default function ResponsiveDrawer({
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
-  const { data: user } = useGetSingleUserQuery({});
+  const { data: user } = useGetMyProfileQuery({});
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const router = useRouter();

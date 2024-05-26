@@ -37,7 +37,6 @@ const ProfileDropdown = () => {
   const anchorRef = React.useRef<HTMLButtonElement>(null);
   const userInfo = getUserInfo() as JwtPayload;
 
-  console.log(userInfo, "xx");
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -115,9 +114,7 @@ const ProfileDropdown = () => {
                       aria-labelledby="composition-button"
                       onKeyDown={handleListKeyDown}
                     >
-                      <Link
-                        href={`/dashboard/${String(userInfo?.role)}/profile`}
-                      >
+                      <Link href={`/dashboard/${userInfo?.role}/profile`}>
                         <MenuItem>Profile</MenuItem>
                       </Link>
                       <Link href={`/dashboard/${String(userInfo?.role)}`}>

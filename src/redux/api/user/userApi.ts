@@ -3,7 +3,7 @@ import { tagTypes } from "../tag-types";
 
 const userApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    getSingleUser: build.query({
+    getMyProfile: build.query({
       query: () => {
         return {
           url: "/profile",
@@ -43,7 +43,7 @@ const userApi = baseApi.injectEndpoints({
 });
 
 export const {
-  useGetSingleUserQuery,
+  useGetMyProfileQuery,
   useUpdateUserMutation,
   useGetAllUserQuery,
   useDeleteUserMutation,

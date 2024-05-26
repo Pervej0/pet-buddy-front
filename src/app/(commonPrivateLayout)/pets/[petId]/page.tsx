@@ -1,13 +1,13 @@
 "use client";
 
 import { useGetSinglePetQuery } from "@/redux/api/user/petsApi";
-import { Box, Container, Grid, Stack, Typography } from "@mui/material";
-import React from "react";
+import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import React, { useState } from "react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Loader from "@/components/Shared/Loader";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { getUserInfo } from "@/services/auth.services";
+import Inventory2Icon from "@mui/icons-material/Inventory2";
+import Link from "next/link";
 
 const PetDetails = ({ params }: { params: { petId: string } }) => {
   const { data: pet, isLoading } = useGetSinglePetQuery(params?.petId);
@@ -17,6 +17,7 @@ const PetDetails = ({ params }: { params: { petId: string } }) => {
   }
 
   const {
+    id,
     name,
     description,
     age,
@@ -101,6 +102,11 @@ const PetDetails = ({ params }: { params: { petId: string } }) => {
               {specialNeeds}
             </span>
           </Typography>
+        </Box>
+        <Box mb={3}>
+          <Link href={`/adoption-request/${id}`}>
+            <Button startIcon={<Inventory2Icon />}>Adopt</Button>{" "}
+          </Link>
         </Box>
         <Box mb={8}>
           <Typography mb={6} variant="h5" component="h5" fontWeight={600}>
