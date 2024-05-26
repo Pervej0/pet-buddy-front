@@ -20,10 +20,12 @@ const MyRequestPage = () => {
     console.log(id);
 
     try {
-      const result = await deleteAdoptionRequest(id);
-      console.log(result, "xx");
-      if (result?.data.success) {
-        toast.success(result.data.message);
+      if (confirm("Are you sure you want to delete?")) {
+        const result = await deleteAdoptionRequest(id);
+        console.log(result, "xx");
+        if (result?.data.success) {
+          toast.success(result.data.message);
+        }
       }
     } catch (err: any) {
       console.log(err);

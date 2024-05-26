@@ -46,18 +46,25 @@ const sidebarItems = (role: TUserRole) => {
           icon: TryIcon,
         },
         {
-          title: "Adoption Request",
-          path: `${role}/adoption-request`,
+          title: "Manage Requests",
+          path: `${role}/adoption-requests`,
           icon: BookOnlineIcon,
         }
       );
       break;
     case USER_ROLE.USER:
-      menus.push({
-        title: "My Request",
-        path: `${role}/my-adoption-request`,
-        icon: BookOnlineIcon,
-      });
+      menus.push(
+        {
+          title: "Dashboard",
+          path: `dashboard/${role}`,
+          icon: DashboardIcon,
+        },
+        {
+          title: "My Request",
+          path: `${role}/my-adoption-request`,
+          icon: BookOnlineIcon,
+        }
+      );
     default:
       break;
   }
