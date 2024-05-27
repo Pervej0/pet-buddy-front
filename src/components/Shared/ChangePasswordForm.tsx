@@ -13,8 +13,15 @@ const ChangePasswordForm = () => {
   const [disabledButton, setDisabledButton] = useState(false);
 
   const handleSubmit = async (values: FieldValues) => {
+    if (values.newPassword !== values.confirmPassword) {
+      return toast.error("Confirm password dose not matched!");
+    }
+    const data = {
+      oldPassword: values.oldPassword,
+      newPassword: values.confirmPassword,
+    };
     try {
-      const result = await changePassword(values).unwrap();
+      const result = await changePassword(data).unwrap();
       if (result.success) {
         setDisabledButton(true);
         toast.success(result.message);
@@ -46,6 +53,13 @@ const ChangePasswordForm = () => {
           <GlobalInput
             name="newPassword"
             label="New password"
+            type="password"
+            fullWidth={true}
+            required={true}
+          />
+          <GlobalInput
+            name="confirmPassword"
+            label="Confirm Password"
             type="password"
             fullWidth={true}
             required={true}

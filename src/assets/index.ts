@@ -17,6 +17,13 @@ const assets = {
       linkedin: require("./icon/linkedin.png"),
       instagram: require("./icon/instagram.png"),
     },
+    about: {
+      missionImage: require("./about/mission.png"),
+      team1: require("./about/team-1.avif"),
+      team2: require("./about/team-2.avif"),
+      team3: require("./about/team-3.avif"),
+      pervej: require("./about/Md Pervej Hossain.jpg"),
+    },
   },
 };
 

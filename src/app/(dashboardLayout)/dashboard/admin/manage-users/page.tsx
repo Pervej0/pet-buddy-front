@@ -2,7 +2,6 @@
 
 import {
   Box,
-  Button,
   CircularProgress,
   IconButton,
   Stack,
@@ -19,18 +18,26 @@ import {
   useDeleteUserMutation,
   useGetAllUserQuery,
 } from "@/redux/api/user/userApi";
+import UpdateUserModal from "./components/UpdateUserModal";
+import Loader from "@/components/Shared/Loader";
 
 const UsersPage = () => {
-  //   const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [searchText, setSearchText] = useState<string>("");
   const [deleteUser] = useDeleteUserMutation();
   const { isLoading, data } = useGetAllUserQuery({});
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   const handleDelete = async (id: string) => {
     try {
-      const result = await deleteUser(id);
-      if (result?.data.success) {
-        toast.success(result.data.message);
+      if (confirm("Are you sure want to delete?")) {
+        const result = await deleteUser(id);
+        if (result?.data.success) {
+          toast.success(result.data.message);
+        }
       }
     } catch (err: any) {
       console.log(err);
@@ -58,11 +65,10 @@ const UsersPage = () => {
             >
               <DeleteIcon sx={{ color: "red" }} />
             </IconButton>
-            <Link href={`/dashboard/admin/doctors/edit/${row.id}`}>
-              <IconButton aria-label="delete">
-                <EditIcon />
-              </IconButton>
-            </Link>
+            <IconButton onClick={() => setOpen(true)} aria-label="delete">
+              <EditIcon />
+            </IconButton>
+            <UpdateUserModal open={open} setOpen={setOpen} itemId={row?.id} />
           </Box>
         );
       },

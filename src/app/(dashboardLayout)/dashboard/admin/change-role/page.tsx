@@ -5,7 +5,7 @@ import GlobalInput from "@/components/Form/GlobalInput";
 import GlobalSelect from "@/components/Form/GlobalSelect";
 import {
   useChangePasswordMutation,
-  useChangeUserRoleMutation,
+  useChangeUserRoleAndStatusMutation,
 } from "@/redux/api/user/userApi";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
@@ -18,12 +18,12 @@ const userRoles = [
 ];
 
 const ChangeRolePage = () => {
-  const [changeUserRole] = useChangeUserRoleMutation();
+  const [changeUserRoleAndStatus] = useChangeUserRoleAndStatusMutation();
   const [disabledButton, setDisabledButton] = useState(false);
 
   const handleSubmit = async (values: FieldValues) => {
     try {
-      const result = await changeUserRole(values).unwrap();
+      const result = await changeUserRoleAndStatus(values).unwrap();
       if (result?.success) {
         setDisabledButton(true);
         toast.success(result.message);
