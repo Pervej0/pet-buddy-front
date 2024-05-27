@@ -12,7 +12,7 @@ import React from "react";
 import { Toaster, toast } from "sonner";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import UpdateStatusMenu from "./components/updateStatusMenu";
+import UpdateStatusMenu from "./component/UpdateStatusMenu";
 
 const ManageRequestsPage = () => {
   const { data: allRequests, isLoading } = useGetAllAdoptionRequestQuery({});

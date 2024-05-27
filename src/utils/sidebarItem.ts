@@ -37,12 +37,12 @@ const sidebarItems = (role: TUserRole) => {
         },
         {
           title: "Manage User",
-          path: `${role}/users`,
+          path: `${role}/manage-users`,
           icon: GroupIcon,
         },
         {
           title: "Change Role",
-          path: `${role}/user`,
+          path: `${role}/change-role`,
           icon: TryIcon,
         },
         {
