@@ -1,15 +1,11 @@
 //icons
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import GroupIcon from "@mui/icons-material/Group";
-import MedicalInformationIcon from "@mui/icons-material/MedicalInformation";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import ReviewsIcon from "@mui/icons-material/Reviews";
 import TryIcon from "@mui/icons-material/Try";
 import PersonIcon from "@mui/icons-material/Person";
 import KeyIcon from "@mui/icons-material/Key";
 import BookOnlineIcon from "@mui/icons-material/BookOnline";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { USER_ROLE } from "@/constant/common";
 import { ISidebarItems, TUserRole } from "@/types/common.type";
 
@@ -49,6 +45,11 @@ const sidebarItems = (role: TUserRole) => {
           title: "Manage Requests",
           path: `${role}/adoption-requests`,
           icon: BookOnlineIcon,
+        },
+        {
+          title: "New Pet",
+          path: `${role}/new-pet`,
+          icon: ReceiptLongIcon,
         }
       );
       break;

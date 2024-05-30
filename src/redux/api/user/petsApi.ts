@@ -8,6 +8,7 @@ const petsApi = baseApi.injectEndpoints({
         return {
           url: "/pets",
           method: "POST",
+          contentType: "multipart/form-data",
           data,
         };
       },

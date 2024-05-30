@@ -10,6 +10,7 @@ const nextConfig = {
   },
   env: {
     BACK_END_URL: process.env.BACK_END_URL,
+    IMAGE_HOST: process.env.IMAGE_HOST,
   },
 };
 
