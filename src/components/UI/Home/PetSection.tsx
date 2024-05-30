@@ -60,7 +60,7 @@ const PetSection = () => {
             </Typography>
           </Grid>
           <Grid item md={6} xs={12}>
-            <Stack direction="row" gap={2}>
+            <Box sx={{ display: "flex", flexWrap: "wrap" }} gap={2}>
               <SelectField
                 label="Age"
                 value={age}
@@ -99,7 +99,7 @@ const PetSection = () => {
                 label="Search pets"
                 size="small"
               />
-            </Stack>
+            </Box>
           </Grid>
         </Grid>
         <Grid container spacing={3}>

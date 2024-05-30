@@ -41,20 +41,34 @@ const Footer = () => {
             </Stack>
           </Grid>
           <Grid item md={6} xs={12}>
-            <Stack
-              direction="row"
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: { sm: "row", xs: "column" },
+              }}
               justifyContent="center"
-              alignItems="center"
               gap={4}
             >
-              <Typography color="#ffffff" component={Link} href="/consultation">
-                About
-              </Typography>
-              <Typography color="#ffffff">Contact Us</Typography>
-              <Typography color="#ffffff">Privacy Policy</Typography>
-              <Typography color="#ffffff">Terms & Conditions</Typography>
-              <Typography color="#ffffff">Support</Typography>
-            </Stack>
+              <Box>
+                <Typography
+                  color="#ffffff"
+                  component={Link}
+                  href="/consultation"
+                >
+                  About
+                </Typography>
+                <Typography my={2} color="#ffffff">
+                  Contact Us
+                </Typography>
+                <Typography color="#ffffff">Privacy Policy</Typography>
+              </Box>
+              <Box>
+                <Typography color="#ffffff">Terms & Conditions</Typography>
+                <Typography mt={2} color="#ffffff">
+                  Support
+                </Typography>
+              </Box>
+            </Box>
           </Grid>
           <Grid item md={3} xs={12}>
             <Stack direction="row" gap={2} justifyContent="center" py={3}>
