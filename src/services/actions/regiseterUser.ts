@@ -9,6 +9,7 @@ const registerUser = async (data: FieldValues) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
+    cache: "no-store",
   });
   const result = await response.json();
   return result;

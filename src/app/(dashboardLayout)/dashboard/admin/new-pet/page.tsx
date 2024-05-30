@@ -6,7 +6,7 @@ import GlobalSelect from "@/components/Form/GlobalSelect";
 import GlobalUploadFile from "@/components/Form/GlobalUpload";
 import { useCreatePetMutation } from "@/redux/api/user/petsApi";
 import convertToFormData from "@/utils/converToFormData";
-import uploadToImageBB from "@/utils/uploadToImagebb";
+import uploadToImageBB from "@/utils/uploadToImageBB";
 import {
   Box,
   Button,
@@ -16,7 +16,6 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import axios from "axios";
 import React, { useState } from "react";
 import { FieldValues } from "react-hook-form";
 import { Toaster, toast } from "sonner";
@@ -63,17 +62,21 @@ const NewPetPage = () => {
   const [createPet] = useCreatePetMutation();
 
   const handleSubmit = async (values: FieldValues) => {
+    setButtonDisabled(true);
     values.age = Number(values.age);
+    if (files.length < 1) {
+      toast.error("Please upload more than one image");
+      setButtonDisabled(false);
+      return;
+    }
     const imageUpload = await uploadToImageBB(files);
     values.photos = imageUpload.imageUrls;
     // return;
     const data = convertToFormData(values);
-
     try {
       const result = await createPet(data).unwrap();
       console.log(result, "xxx");
       if (result.success) {
-        setButtonDisabled(true);
         toast.success(result.message);
       }
     } catch (err: any) {

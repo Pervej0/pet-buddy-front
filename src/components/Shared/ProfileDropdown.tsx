@@ -28,14 +28,12 @@ import Link from "next/link";
 import logOutUser from "@/services/actions/logOutUser";
 import { userInfo } from "os";
 import { TUserInfo } from "@/types/common.type";
-import { JwtPayload } from "jwt-decode";
 
 const ProfileDropdown = () => {
-  const user = getUserInfo();
+  const user = getUserInfo() as TUserInfo;
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
-  const userInfo = getUserInfo() as JwtPayload;
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -114,10 +112,10 @@ const ProfileDropdown = () => {
                       aria-labelledby="composition-button"
                       onKeyDown={handleListKeyDown}
                     >
-                      <Link href={`/dashboard/${userInfo?.role}/profile`}>
+                      <Link href={`/dashboard/${user?.role}/profile`}>
                         <MenuItem>Profile</MenuItem>
                       </Link>
-                      <Link href={`/dashboard/${String(userInfo?.role)}`}>
+                      <Link href={`/dashboard/${user?.role}`}>
                         <MenuItem>Dashboard</MenuItem>
                       </Link>
                       <MenuItem onClick={handleClose}>Logout</MenuItem>
