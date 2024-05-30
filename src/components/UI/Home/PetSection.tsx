@@ -60,7 +60,10 @@ const PetSection = () => {
             </Typography>
           </Grid>
           <Grid item md={6} xs={12}>
-            <Box sx={{ display: "flex", flexWrap: "wrap" }} gap={2}>
+            <Box
+              sx={{ display: "flex", flexWrap: { md: "nowrap", sm: "wrap" } }}
+              gap={2}
+            >
               <SelectField
                 label="Age"
                 value={age}
