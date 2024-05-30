@@ -10,6 +10,8 @@ const assets = {
     },
     home: {
       homeBanner: require("./home/home-banner.png"),
+      homeBG1: require("./home/bg-banner-1.jpg"),
+      homeBG2: require("./home/bg-banner-2.jpg"),
     },
     icon: {
       facebook: require("./icon/facebook.png"),

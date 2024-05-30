@@ -120,7 +120,7 @@ const Testimonial = () => {
                 maxWidth: "400px",
                 width: "100%",
                 alignItems: "center",
-                backgroundColor: "#b9e0ff",
+                backgroundColor: "#e6ff8e",
                 flexDirection: "column",
                 padding: "25px 15px",
                 gap: "15px",
@@ -195,7 +195,7 @@ const Testimonial = () => {
                 }}
               >
                 <Image
-                  src="https://i.ibb.co/MCr0yvy/Md-Pervej-Hossain.png"
+                  src="https://objectstorage.me-dubai-1.oraclecloud.com/n/axwzijd5v1vn/b/DSL_IMAGES/o/IMAGE/ca247c38-776d-4595-8335-e2043af2ddf8-freepik-export-20240425125712NXUe.png"
                   style={{ borderRadius: "100px" }}
                   alt="Md Pervej Hossain"
                   height={180}
@@ -236,7 +236,7 @@ const Testimonial = () => {
                 maxWidth: "400px",
                 width: "100%",
                 alignItems: "center",
-                backgroundColor: "#b9e0ff",
+                backgroundColor: "#e6ff8e",
                 flexDirection: "column",
                 padding: "25px 15px",
                 gap: "15px",

@@ -8,7 +8,10 @@ const HeroSection = () => {
     <Box
       sx={{
         width: "100%",
-        marginTop: { md: 4, sm: 8, xs: 12 },
+        marginTop: { md: 1, sm: 8, xs: 12 },
+        backgroundImage:
+          "url(https://img.freepik.com/free-vector/hand-drawn-abstract-floral-background_23-2150735236.jpg)",
+        backgroundSize: "cover",
       }}
     >
       <Container>
