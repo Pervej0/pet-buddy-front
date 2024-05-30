@@ -75,12 +75,14 @@ const LoginPage = () => {
               }}
             >
               <Box>
-                <Image
-                  src={assets.images.brand}
-                  width={170}
-                  height={170}
-                  alt="logo"
-                />
+                <Link href="/">
+                  <Image
+                    src={assets.images.brand}
+                    width={170}
+                    height={170}
+                    alt="logo"
+                  />
+                </Link>
               </Box>
               <Box>
                 <Typography variant="h6" fontWeight={600}>

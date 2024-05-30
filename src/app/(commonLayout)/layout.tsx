@@ -1,9 +1,6 @@
-"use client";
-
 import Footer from "@/components/Shared/Footer";
 import Navbar from "@/components/Shared/Navbar";
-import { getUserInfo } from "@/services/auth.services";
-import { useRouter } from "next/navigation";
+import "react-multi-carousel/lib/styles.css";
 import React, { ReactNode } from "react";
 
 const PrivateLayout = ({ children }: { children: ReactNode }) => {

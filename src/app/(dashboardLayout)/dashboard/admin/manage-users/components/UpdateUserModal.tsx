@@ -19,7 +19,7 @@ import {
 type TModal = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  itemId: string;
+  selectedRowId: string;
 };
 
 const userStatusOptions = [
@@ -27,14 +27,18 @@ const userStatusOptions = [
   { value: "deactivate", label: "Deactivate" },
 ];
 
-export default function UpdateUserModal({ open, setOpen, itemId }: TModal) {
+export default function UpdateUserModal({
+  open,
+  setOpen,
+  selectedRowId,
+}: TModal) {
   const [changeUserRoleAndStatus] = useChangeUserRoleAndStatusMutation();
-  console.log(itemId, "x");
 
   const handleSubmit: SubmitHandler<FieldValues> = async (
     values: FieldValues
   ) => {
-    values.id = itemId;
+    values.id = selectedRowId;
+
     try {
       const result = await changeUserRoleAndStatus(values).unwrap();
       if (result?.success) {

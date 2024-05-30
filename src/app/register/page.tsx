@@ -113,12 +113,14 @@ const RegisterPage = () => {
                   },
                 }}
               >
-                <Image
-                  src={assets.images.brand}
-                  alt="login logo"
-                  width="170"
-                  height="170"
-                />
+                <Link href="/">
+                  <Image
+                    src={assets.images.brand}
+                    alt="login logo"
+                    width="170"
+                    height="170"
+                  />
+                </Link>
               </Box>
               <Typography
                 textAlign="left"

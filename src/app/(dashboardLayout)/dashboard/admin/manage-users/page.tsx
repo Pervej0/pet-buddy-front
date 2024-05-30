@@ -26,6 +26,7 @@ const UsersPage = () => {
   const [searchText, setSearchText] = useState<string>("");
   const [deleteUser] = useDeleteUserMutation();
   const { isLoading, data } = useGetAllUserQuery({});
+  const [selectedRowId, setSelectedRowId] = useState("");
 
   if (isLoading) {
     return <Loader />;
@@ -65,10 +66,15 @@ const UsersPage = () => {
             >
               <DeleteIcon sx={{ color: "red" }} />
             </IconButton>
-            <IconButton onClick={() => setOpen(true)} aria-label="delete">
+            <IconButton
+              onClick={() => {
+                setOpen(true);
+                setSelectedRowId(row.id);
+              }}
+              aria-label="delete"
+            >
               <EditIcon />
             </IconButton>
-            <UpdateUserModal open={open} setOpen={setOpen} itemId={row?.id} />
           </Box>
         );
       },
@@ -78,6 +84,11 @@ const UsersPage = () => {
   return (
     <>
       <Toaster position="top-center" />
+      <UpdateUserModal
+        open={open}
+        setOpen={setOpen}
+        selectedRowId={selectedRowId}
+      />
       <Stack mt={10} justifyContent="space-between" direction="row" mb={6}>
         {/* <Button variant="outlined" onClick={() => setOpen(true)}>
           Create Doctor
