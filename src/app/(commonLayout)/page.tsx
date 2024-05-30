@@ -1,6 +1,6 @@
 import HeroSection from "@/components/UI/Home/HeroSection";
 import PetSection from "@/components/UI/Home/PetSection";
-import { Box, Container } from "@mui/material";
+import Testimonial from "@/components/UI/Home/Testimonial";
 import React from "react";
 
 const page = () => {
@@ -8,6 +8,7 @@ const page = () => {
     <>
       <HeroSection />
       <PetSection />
+      <Testimonial />
     </>
   );
 };
