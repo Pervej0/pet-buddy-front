@@ -11,14 +11,13 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Link from "next/link";
 import Loader from "@/components/Shared/Loader";
 import Image from "next/image";
+import dayjs from "dayjs";
 
 const MyRequestPage = () => {
   const { data: myRequest, isLoading } = useGetMyAdoptionRequestsQuery({});
   const [deleteAdoptionRequest] = useDeleteAdoptionRequestMutation();
 
   const handleDelete = async (id: string) => {
-    console.log(id);
-
     try {
       if (confirm("Are you sure you want to delete?")) {
         const result = await deleteAdoptionRequest(id);
@@ -38,6 +37,7 @@ const MyRequestPage = () => {
     species: item.pet.species,
     age: item.pet.age,
     status: item.status,
+    date: dayjs(item.adoptionDate).format("DD/MM/YYYY"),
     photo: item.pet.photos[0],
   }));
 
@@ -45,6 +45,7 @@ const MyRequestPage = () => {
     { field: "name", headerName: "Pet Name", flex: 1 },
     { field: "species", headerName: "Species", flex: 1 },
     { field: "age", headerName: "Age", flex: 1 },
+    { field: "date", headerName: "Adoption Date", flex: 1 },
     {
       field: "photo",
       headerName: "Photo",
