@@ -1,14 +1,14 @@
 "use client";
+
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
 import assets from "@/assets";
 import Image from "next/image";
 import Link from "next/link";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler } from "react-hook-form";
 import { Toaster, toast } from "sonner";
 import GlobalForm from "@/components/Form/GlobalForm";
 import GlobalInput from "@/components/Form/GlobalInput";
-// import { loginUser } from "@/services/actions/loginUser";
 import { useRouter } from "next/navigation";
 import { storeUserInfo } from "@/services/auth.services";
 import { z } from "zod";
@@ -26,17 +26,17 @@ export interface TRegisterInput {
   };
 }
 
-const registerSchema = z.object({
-  password: z.string().min(6, "Must be at least 6 characters"),
-  name: z.string().min(1, "Please enter your name!"),
-  email: z.string().email("Please enter a valid email address!"),
-});
+// const registerSchema = z.object({
+//   password: z.string().min(6, "Must be at least 6 characters"),
+//   name: z.string().min(1, "Please enter your name!"),
+//   email: z.string().email("Please enter a valid email address!"),
+// });
 
-export const defaultValues = {
-  password: "",
-  name: "",
-  email: "",
-};
+// export const defaultValues = {
+//   password: "",
+//   name: "",
+//   email: "",
+// };
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -102,12 +102,8 @@ const RegisterPage = () => {
             <Box mb={4}>
               <Box
                 sx={{
-                  //   display: "flex",
                   flexDirection: "column",
-                  //   justifyContent: "center",
-                  //   textAlign: "center",
                   gap: "5px 0px",
-
                   "& img": {
                     margin: "0 auto",
                   },
@@ -133,8 +129,7 @@ const RegisterPage = () => {
             </Box>
             <GlobalForm
               onSubmit={handleRegister}
-              resolver={zodResolver(registerSchema)}
-              defaultValues={defaultValues}
+              // resolver={zodResolver(registerSchema)}
             >
               <GlobalInput
                 name="name"
