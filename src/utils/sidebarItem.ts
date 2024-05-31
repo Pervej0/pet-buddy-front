@@ -8,6 +8,7 @@ import BookOnlineIcon from "@mui/icons-material/BookOnline";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import { USER_ROLE } from "@/constant/common";
 import { ISidebarItems, TUserRole } from "@/types/common.type";
+import PetsIcon from "@mui/icons-material/Pets";
 
 const sidebarItems = (role: TUserRole) => {
   const menus: ISidebarItems[] = [];
@@ -32,24 +33,29 @@ const sidebarItems = (role: TUserRole) => {
           icon: DashboardIcon,
         },
         {
-          title: "Manage User",
-          path: `${role}/manage-users`,
-          icon: GroupIcon,
-        },
-        {
           title: "Change Role",
           path: `${role}/change-role`,
           icon: TryIcon,
         },
         {
-          title: "Manage Requests",
-          path: `${role}/adoption-requests`,
-          icon: BookOnlineIcon,
+          title: "Manage User",
+          path: `${role}/manage-users`,
+          icon: GroupIcon,
         },
         {
           title: "New Pet",
           path: `${role}/new-pet`,
           icon: ReceiptLongIcon,
+        },
+        {
+          title: "Manage Pets",
+          path: `${role}/manage-pets`,
+          icon: PetsIcon,
+        },
+        {
+          title: "Manage Requests",
+          path: `${role}/adoption-requests`,
+          icon: BookOnlineIcon,
         }
       );
       break;

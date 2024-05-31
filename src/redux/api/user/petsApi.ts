@@ -49,12 +49,20 @@ const petsApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.pets],
     }),
+    deletePet: build.mutation({
+      query: (id) => ({
+        url: `/pets/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [tagTypes.pets],
+    }),
   }),
 });
 
 export const {
   useUpdatePetMutation,
   useCreatePetMutation,
+  useDeletePetMutation,
   useGetAllPetsQuery,
   useGetSinglePetQuery,
 } = petsApi;

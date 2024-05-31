@@ -4,6 +4,7 @@ import GlobalForm from "@/components/Form/GlobalForm";
 import GlobalInput from "@/components/Form/GlobalInput";
 import GlobalSelect from "@/components/Form/GlobalSelect";
 import GlobalUploadFile from "@/components/Form/GlobalUpload";
+import { genderOptions, sizeOptions } from "@/constant/common";
 import { useCreatePetMutation } from "@/redux/api/user/petsApi";
 import convertToFormData from "@/utils/converToFormData";
 import uploadToImageBB from "@/utils/uploadToImageBB";
@@ -21,40 +22,22 @@ import { FieldValues } from "react-hook-form";
 import { Toaster, toast } from "sonner";
 
 const defaultValues = {
-  name: "Bella",
-  species: "Dog",
+  name: "Coco",
+  species: "Cat",
   gender: "female",
-  breed: "Poodle",
-  age: 4,
+  breed: "Persian",
+  age: 3,
   size: "small",
-  location: "Chicago, IL",
+  location: "Dallas, TX",
   description:
-    "Bella is a sweet and gentle Poodle who loves to cuddle. She is very friendly and gets along well with other dogs.",
-  temperament: "Gentle, Friendly, Affectionate",
-  medicalHistory: "Spayed, up-to-date on vaccinations, has diabetes",
-  adoptionRequirements: "Home check required, no young children",
-  specialNeeds: "Diabetes requiring insulin injections twice daily",
-  healthStatus: "Diabetic",
+    "Coco is a sweet and quiet Persian cat. She loves to be pampered and enjoys being brushed. Coco is best suited for a calm and quiet household.",
+  temperament: "Sweet, Quiet, Affectionate",
+  medicalHistory:
+    "Up-to-date on vaccinations, spayed, no known medical issues.",
+  adoptionRequirements: "Calm home without small children.",
+  specialNeeds: "Regular grooming",
+  healthStatus: "Excellent",
 };
-
-const sizeOptions = [
-  { value: "large", label: "Large" },
-  {
-    value: "medium",
-    label: "Medium",
-  },
-  {
-    value: "small",
-    label: "Label",
-  },
-];
-const genderOptions = [
-  { value: "male", label: "Male" },
-  {
-    value: "female",
-    label: "Female",
-  },
-];
 
 const NewPetPage = () => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
@@ -71,11 +54,10 @@ const NewPetPage = () => {
     }
     const imageUpload = await uploadToImageBB(files);
     values.photos = imageUpload.imageUrls;
-    // return;
+
     const data = convertToFormData(values);
     try {
       const result = await createPet(data).unwrap();
-      console.log(result, "xxx");
       if (result.success) {
         toast.success(result.message);
       }

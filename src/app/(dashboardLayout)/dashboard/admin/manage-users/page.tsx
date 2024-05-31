@@ -90,15 +90,11 @@ const UsersPage = () => {
         selectedRowId={selectedRowId}
       />
       <Stack mt={10} justifyContent="space-between" direction="row" mb={6}>
-        {/* <Button variant="outlined" onClick={() => setOpen(true)}>
-          Create Doctor
-        </Button> */}
         <TextField
           onChange={(e) => setSearchText(e.target.value)}
           size="small"
           placeholder="Search here"
         />
-        {/* <CreateDoctorModal open={open} setOpen={setOpen} /> */}
       </Stack>
       {isLoading ? (
         <Box textAlign="center">
