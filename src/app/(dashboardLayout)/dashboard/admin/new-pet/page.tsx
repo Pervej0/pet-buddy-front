@@ -3,7 +3,6 @@
 import GlobalForm from "@/components/Form/GlobalForm";
 import GlobalInput from "@/components/Form/GlobalInput";
 import GlobalSelect from "@/components/Form/GlobalSelect";
-import GlobalUploadFile from "@/components/Form/GlobalUpload";
 import { genderOptions, sizeOptions } from "@/constant/common";
 import { useCreatePetMutation } from "@/redux/api/user/petsApi";
 import convertToFormData from "@/utils/converToFormData";
@@ -11,7 +10,6 @@ import uploadToImageBB from "@/utils/uploadToImageBB";
 import {
   Box,
   Button,
-  Checkbox,
   Container,
   Grid,
   Tooltip,
@@ -20,24 +18,6 @@ import {
 import React, { useState } from "react";
 import { FieldValues } from "react-hook-form";
 import { Toaster, toast } from "sonner";
-
-const defaultValues = {
-  name: "Coco",
-  species: "Cat",
-  gender: "female",
-  breed: "Persian",
-  age: 3,
-  size: "small",
-  location: "Dallas, TX",
-  description:
-    "Coco is a sweet and quiet Persian cat. She loves to be pampered and enjoys being brushed. Coco is best suited for a calm and quiet household.",
-  temperament: "Sweet, Quiet, Affectionate",
-  medicalHistory:
-    "Up-to-date on vaccinations, spayed, no known medical issues.",
-  adoptionRequirements: "Calm home without small children.",
-  specialNeeds: "Regular grooming",
-  healthStatus: "Excellent",
-};
 
 const NewPetPage = () => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
@@ -73,11 +53,7 @@ const NewPetPage = () => {
         Add a new pet
       </Typography>
       <Container>
-        <GlobalForm
-          sx={{ padding: "30px" }}
-          onSubmit={handleSubmit}
-          defaultValues={defaultValues}
-        >
+        <GlobalForm sx={{ padding: "30px" }} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item md={6} xs={12}>
               <GlobalInput name="name" label="Name" required fullWidth={true} />

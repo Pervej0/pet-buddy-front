@@ -32,6 +32,7 @@ const userApi = baseApi.injectEndpoints({
     }),
     deleteUser: build.mutation({
       query: (id) => {
+        console.log(id, "xssssssssss");
         return {
           url: `/profiles/${id}`,
           method: "DELETE",

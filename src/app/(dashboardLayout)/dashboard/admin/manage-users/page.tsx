@@ -35,7 +35,7 @@ const UsersPage = () => {
   const handleDelete = async (id: string) => {
     try {
       if (confirm("Are you sure want to delete?")) {
-        const result = await deleteUser(id);
+        const result = await deleteUser(id).unwrap();
         if (result?.data.success) {
           toast.success(result.data.message);
         }
