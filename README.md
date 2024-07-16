@@ -1,6 +1,6 @@
 ## petBuddy
 
-An web application build on [Next.js](https://nextjs.org/) that's purpose is to make pet animal available to the animal lover.
+A web application built on [Next.js](https://nextjs.org/) that's purpose is to make pet animals available to the animal lover.
 
 ## Live Domain
 
