@@ -2,7 +2,7 @@
 
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { Toaster, toast } from "sonner";
@@ -25,17 +25,42 @@ const loginSchema = z.object({
 
 const LoginPage = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin: SubmitHandler<FieldValues> = async (data: FieldValues) => {
+    setIsLoading(true);
+
     const userInfo: FieldValues = await loginUser(data);
     if (userInfo.success) {
       toast.success("Logged in successfully.");
       router.push("/");
       storeUserInfo(userInfo.data.token);
+      setIsLoading(false);
     } else {
+      setIsLoading(false);
       toast.error((userInfo?.message as string) || "something went wrong");
     }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      const promptResult = prompt(
+        "Press 7 (Zero) for user access, Or press 9 (One) for admin access"
+      );
+      if (!promptResult) {
+        return;
+      }
+      if (Number(promptResult) === 9) {
+        handleLogin({ email: "admin@gmail.com", password: "123456" });
+      } else if (Number(promptResult) === 7) {
+        handleLogin({ email: "user@gmail.com", password: "123456" });
+      }
+
+      console.log(promptResult, "Xx");
+    }, 2000);
+  }, []);
+
+  console.log("first");
 
   return (
     <>
@@ -129,15 +154,15 @@ const LoginPage = () => {
                 >
                   <Link href={"/forgot-password"}>Forgot Password?</Link>
                 </Typography>
-
                 <Button
                   sx={{
                     margin: "10px 0px",
                   }}
+                  disabled={isLoading ? true : false}
                   fullWidth={true}
                   type="submit"
                 >
-                  Login
+                  {isLoading ? "Loading.." : "Login"}
                 </Button>
                 <Typography variant="body2" component="p" fontWeight={300}>
                   Don&apos;t have an account?{" "}
