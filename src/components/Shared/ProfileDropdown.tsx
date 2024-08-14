@@ -1,32 +1,17 @@
 import React from "react";
-import { Dropdown } from "@mui/base/Dropdown";
-import { Menu } from "@mui/base/Menu";
-import { MenuButton } from "@mui/base/MenuButton";
-import { MenuItem as BaseMenuItem, menuItemClasses } from "@mui/base/MenuItem";
 import {
-  AppBar,
-  Avatar,
-  Box,
   Button,
   ClickAwayListener,
   Grow,
-  IconButton,
   MenuItem,
   MenuList,
   Paper,
   Popper,
-  Toolbar,
-  Tooltip,
-  Typography,
-  styled,
 } from "@mui/material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { AccountCircle, Padding } from "@mui/icons-material";
 import { getUserInfo } from "@/services/auth.services";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import logOutUser from "@/services/actions/logOutUser";
-import { userInfo } from "os";
 import { TUserInfo } from "@/types/common.type";
 
 const ProfileDropdown = () => {
