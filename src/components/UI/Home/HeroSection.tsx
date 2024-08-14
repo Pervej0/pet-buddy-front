@@ -27,8 +27,9 @@ const HeroSection = () => {
         >
           <Box>
             <Typography
+              className="font-serif"
               sx={{
-                fontSize: { md: "45px", sm: "30px", xs: "26px" },
+                fontSize: { md: "42px", sm: "28px", xs: "24px" },
                 fontWeight: 700,
               }}
               variant="h1"
@@ -37,6 +38,7 @@ const HeroSection = () => {
               Save Teddy Make <br /> Pet Buddy
             </Typography>
             <Typography
+              className="font-sans"
               my={2}
               variant="h6"
               component="h6"
