@@ -55,12 +55,8 @@ const LoginPage = () => {
       } else if (Number(promptResult) === 7) {
         handleLogin({ email: "user@gmail.com", password: "123456" });
       }
-
-      console.log(promptResult, "Xx");
     }, 2000);
   }, []);
-
-  console.log("first");
 
   return (
     <>
