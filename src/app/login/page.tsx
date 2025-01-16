@@ -45,7 +45,7 @@ const LoginPage = () => {
   useEffect(() => {
     setTimeout(() => {
       const promptResult = prompt(
-        "Press 7 (Zero) for user access, Or press 9 (One) for admin access"
+        "Press 7 (Seven) for user access, Or press 9 (One) for admin access"
       );
       if (!promptResult) {
         return;

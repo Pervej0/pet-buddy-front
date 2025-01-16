@@ -40,12 +40,15 @@ const adoptionRequestApi = baseApi.injectEndpoints({
       providesTags: [tagTypes.adoptionRequest],
     }),
     updateAdoptionRequest: build.mutation({
-      query: (data) => ({
-        url: `/adoption-requests/${data.id}`,
-        method: "PUT",
-        contentType: "application/json",
-        data: data.updatedData,
-      }),
+      query: (data) => {
+        console.log(data.id, data.updateData, "pypypypy");
+        return {
+          url: `/adoption-requests/${data.id}`,
+          method: "PUT",
+          contentType: "application/json",
+          data: data.updateData,
+        };
+      },
       invalidatesTags: [tagTypes.adoptionRequest],
     }),
     deleteAdoptionRequest: build.mutation({
