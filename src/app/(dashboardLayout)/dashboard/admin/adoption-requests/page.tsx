@@ -23,9 +23,6 @@ const ManageRequestsPage = () => {
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  // if (allRequests?.data.length < 1) {
-  //   return;
-  // }
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
